@@ -71,6 +71,25 @@ enum AuditStatusCode {
 
 
 /**
+ * The following table is a list of triggers that result in an ad slot refreshing.
+ */
+enum AutoRefreshTrigger {
+  AutoRefreshTriggers_UNKNOWN = 0;
+
+  // Refresh triggered by user-initiated action such as scrolling.
+  USER_ACTION = 1;
+
+  // Event-driven content change. For example, ads refresh when the football
+  // game score changes on the page.
+  EVENT = 2;
+
+  // Time-based refresh. Ads refresh on a predefined time interval even without
+  // user activity.
+  TIME = 3;
+}
+
+
+/**
  * This enum lists the options for taxonomies that can be used to describe content, audience, and
  * ad creative categories.
  * http://www.iab.com/guidelines/taxonomy
@@ -278,6 +297,20 @@ enum DisplayPlacementType {
   OUTSIDE_CONTENT = 3;  // Outside the core content (.e.g, in the ads section on the right rail, as a banner
                         // style placement near the content, etc.).
   RECOMMENDATION  = 4;  // Recommendation widget; most commonly presented below article content.
+}
+
+
+/**
+ * The following table lists the types of entities that provide quantity
+ * measurement for impression multipliers, which are common in Out of Home
+ * advertising.
+ */
+enum DOOHMultiplierMeasurementSourceType {
+  DOOHMultiplierMeasurementSourceType_UNKNOWN = 0;
+
+  MEASUREMENT_VENDOR_PROVIDED = 1;
+  PUBLISHER_PROVIDED          = 2;
+  EXCHANGE_PROVIDED           = 3;
 }
 
 
@@ -527,9 +560,9 @@ enum NativeImageAssetType {
 
   // Main: Large image preview for the ad. 
   // At least one of 2 size variants required: 
-  //   Small: Maximum height at least 627 DIPS; maximum width at least 627, 836, or 1198 DIPS (i.e.,
-  //     aspect ratios of 1:1, 4:3, or 1.91:1, respectively). 
-  //   Large: Maximum height at least 200 DIPS; maximum width at least 200, 267, or 382 DIPS (i.e.,
+  //   Small: Maximum height at least 200 DIPS; maximum width at least 200, 267, or 382 DIPS (i.e.,
+  //     aspect ratios of 1:1, 4:3, or 1.91:1, respectively).
+  //   Large: Maximum height at least 627 DIPS; maximum width at least 627, 836, or 1198 DIPS (i.e.,
   //     aspect ratios of 1:1, 4:3, or 1.91:1, respectively).
   MAIN = 3;
 }
@@ -590,7 +623,7 @@ enum PlacementPosition {
 
 /**
  * The following enum lists the various types of video placements derived largely from the IAB 
- * Digital Video Guidelines.
+ * Digital Video Guidelines. Proposed deprecation of this list and associated attribute in 2024.
  */
 enum VideoPlacementSubtype {
   VideoPlacementSubtype_UNKNOWN = 0;  // Equivalent to an unset value.
@@ -668,6 +701,18 @@ enum SizeUnit {
   DIPS          = 1;  // Device Independent Pixels.
   INCH          = 2;  // Inches.
   CENTIMETER    = 3;  // Centimeters.
+}
+
+
+/**
+ * The following table lists the values for the slot position in pod field, for
+ * use in audio and video ad pods.
+ */
+enum SlotPositionInPod {
+  ANY_AD           =  0;  // Listed first since this is the default.
+  LAST_AD          = -1;
+  FIRST_AD         =  1;
+  FIRST_OR_LAST_AD =  2;
 }
 
 
