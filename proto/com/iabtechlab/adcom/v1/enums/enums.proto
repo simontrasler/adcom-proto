@@ -80,10 +80,13 @@ enum CategoryTaxonomy {
 
   IAB_CONTENT_CAT_TAX_1_0 = 1;  // IAB Tech Lab Content Category Taxonomy 1.0 - Deprecated, and recommend NOT be used since it does not have SCD flags.
   IAB_CONTENT_CAT_TAX_2_0 = 2;  // IAB Tech Lab Content Category Taxonomy 2.0 - Deprecated, and recommend NOT be used since it does not have SCD flags.
-  IAB_AD_PROD_TAX_1_0     = 3;  // IAB Tech Lab Ad Product Taxonomy 1.0 - See https://iabtechlab.com/wp-content/uploads/2020/10/IABTL-Ad-Product-Taxonomy-1.0-Final.xlsx
+  IAB_AD_PROD_TAX_1_0     = 3;  // IAB Tech Lab Ad Product Taxonomy 1.0 - See https://iabtechlab.com/standards/ad-product-taxonomy/
   IAB_AUDIENCE_TAX_1_1    = 4;  // IAB Tech Lab Audience Taxonomy 1.1 - See https://iabtechlab.com/standards/audience-taxonomy/
   IAB_CONTENT_CAT_TAX_2_1 = 5;  // IAB Tech Lab Content Category Taxonomy 1.1 - See https://iabtechlab.com/standards/content-taxonomy/
   IAB_CONTENT_CAT_TAX_2_2 = 6;  // IAB Tech Lab Content Category Taxonomy 2.2 - See https://iabtechlab.com/standards/content-taxonomy/
+  IAB_CONTENT_CAT_TAX_3_0 = 7;  // IAB Tech Lab Content Category Taxonomy 3.0 - See https://iabtechlab.com/standards/content-taxonomy
+  IAB_AD_PROD_TAX_2_0     = 8;  // IAB Tech Lab Ad Product Taxonomy 2.0 - See https://iabtechlab.com/standards/ad-product-taxonomy/
+  IAB_CONTENT_CAT_TAX_3_1 = 9;  // IAB Tech Lab Content Category Taxonomy 3.1 - See https://iabtechlab.com/standards/content-taxonomy
 }
 
 
@@ -279,6 +282,38 @@ enum DisplayPlacementType {
   OUTSIDE_CONTENT = 3;  // Outside the core content (.e.g, in the ads section on the right rail, as a banner
                         // style placement near the content, etc.).
   RECOMMENDATION  = 4;  // Recommendation widget; most commonly presented below article content.
+}
+
+
+/**
+ * The following table lists the types of entities that provide quantity measurement for impression
+ * multipliers, which are common in Out of Home advertising.
+ */
+enum DOOHMultiplierMeasurementSourceType {
+  DOOHMultiplierMeasurementSourceType_UNKNOWN = 0;  // Equivalent to an unset value.
+
+  MEASUREMENT_VENDOR_PROVIDED = 1;
+  PUBLISHER_PROVIDED          = 2;
+  EXCHANGE_PROVIDED           = 3;
+}
+
+
+/**
+ * The following table contains a list of supported taxonomies describing the locations and contexts
+ * in which Out-Of-Home media may be experienced. Taxonomies entries are expected to refer to a
+ * specific version, unless a given taxonomy has explicit semantics for forward compatibility and
+ * handling updates.
+ *
+ * The specifics of how to serialize values for a given taxonomy are expected to be defined by the
+ * given taxonomy.
+ */
+enum DOOHVenueTaxonomy {
+  DOOH_VENUE_TYPES           = 0;
+  OPENOOH_VENUE_TAXONOMY_1_0 = 1;  // https://github.com/openooh/venue-taxonomy/blob/main/specification-1.0.md
+  DPAA_DEVICE_VENUE_TYPES    = 2;  // https://github.com/InteractiveAdvertisingBureau/AdCOM/blob/master/AdCOM%20v1.0%20FINAL.md#list--dooh-venue-types-
+  DMI_VENUES_1_1             = 3;  // https://www.dmi-org.com/download/DMI_Standards_for_DOOH_Venues.pdf
+  OMA_TAXONOMY_JAN_2022      = 4;  // https://www.oma.org.au/industry-standards
+  OPENOOH_VENUE_TAXONOMY_1_1 = 5;  // https://github.com/openooh/venue-taxonomy/blob/main/specification-1.1.md
 }
 
 
@@ -731,6 +766,17 @@ enum SizeUnit {
   DIPS          = 1;  // Device Independent Pixels.
   INCH          = 2;  // Inches.
   CENTIMETER    = 3;  // Centimeters.
+}
+
+
+/**
+ * The following table lists the values for the slot position in pod field, for use in audio and video ad pods.
+ */
+enum SlotPositionInPod {
+  ANY           =  0;  // The default option is listed first.
+  LAST          = -1;
+  FIRST         =  1;
+  FIRST_OR_LAST =  2;
 }
 
 
